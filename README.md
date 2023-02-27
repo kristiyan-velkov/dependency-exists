@@ -10,9 +10,13 @@
     <img src="https://drive.google.com/uc?export=view&id=1Cpz3hVjXUwOiizKtVfTSZqTIwD6I3oB5"  alt="replace-styles"/>
 </a>
 
-**Checks if an package.json dependency exists and returns a boolean value.**
+**Checks if an npm package exists in package.json dependencies. You can also provide a nice terminal message which can be customized as you like.**
 
-**Also you can provide a nice terminal message which can be customized as you like.**
+You can select where to search the npm package in package.json dependencies (by default is all of them):
+
+- **dependencies**
+- **devDependencies**
+- **peerDependencies**
 
 ---
 
@@ -20,7 +24,6 @@
 
 - [Installation 🦾](#installation)
 - [How to Use? 💻](#how-to-use)
-- [Examples 🚀](#examples)
 - [Developer Support 🔗 ](#developer-support)
 - [Support my work ❤️ ](#support-my-work)
 
@@ -28,36 +31,37 @@
 
 ## Installation
 
-- Via npm:
-
-```code
-npm install @kv/dependency-exists --save-dev
-
-```
-
 - Via yarn:
 
 ```code
 yarn add @kv/dependency-exists -D
+```
 
+- Via npm:
+
+```code
+npm install @kv/dependency-exists --save-dev
 ```
 
 ## How to use?
 
 #### API
 
-| Method                         | Usage                                                                                                                                     |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| **dependencyExists()**         | Еasy to use a method that will return a boolean value after checking the module/ npm package.                                             |
-| **dependencyExistsWithText()** | Will return a boolean value if the module/ package exists. Also will provide a nice terminal message which can be customized as you like. |
-| **setTextColors()**            | Sets default text colors for success, error, warn, and info messages. **Used only with dependencyExistsWithText() method.**               |
+| Method                         | Usage                                                                                                                                                  |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **dependencyExists()**         | Еasy to use a method that will return a boolean value if npm package exists in package.json dependecies. Option to select specific dependecies scheck. |
+| **dependencyExistsWithText()** | Will return a boolean value if the npm package exists. Also will provide a nice terminal message which can be customized as you like.                  |
 
 ---
 
 1. **dependencyExists()**
 
+| Properties          | Desrciption                                     | Type               |
+| ------------------- | ----------------------------------------------- | ------------------ |
+| packageName         | npm package name                                | string             |
+| dependenciesConfig? | Search in specific dependencies in package.json | DependenciesConfig |
+
 ```js
-// Interface
 interface DependenciesConfig {
   dependencies: boolean;
   devDependencies: boolean;
@@ -74,8 +78,8 @@ function dependencyExists(packageName: string, dependenciesConfig: DependenciesC
 
 ```
 
-- Default:
-  By default Accepts string and returns a boolean value. Search in all pakage.json file dependecies:
+- **Default**:
+  By default accepts a string and returns a boolean value. Search in all pakage.json file dependencies:
   - **dependencies**
   - **devDependencies**
   - **peerDependencies**
@@ -90,7 +94,7 @@ if (dependencyExists("some-npm-package-name")) {
 }
 ```
 
-- With dependenciesConfig
+- **With dependenciesConfig**
   If you want to search for specific npm package in specific dependency, you can provide config:
 
   ```js
@@ -113,34 +117,96 @@ if (dependencyExists("some-npm-package-name")) {
 
 2. **dependencyExistsWithText() method**
 
-   - **Info:** Easy to use fully customizable method for checking if the module/npm package exists. Coming with default terminal response. The message in the console (color, text ) can be changed to whatever value you want.
-
-| Properties | Desrciption                     | Return value |
-| ---------- | ------------------------------- | ------------ |
-| moduleName | module, npm package name        | boolean      |
-| options    | Custamizable terminal response. | object       |
-
 ```js
-import { dependencyExistsWithText } from "@kv/dependency-exists";
-
-dependencyExistsWithText("some-npm-package-name");
+function DependencyExistsWithTextOptions(packageName: string, options: DependencyExistsWithTextOptions): boolean;
 ```
 
-- with options
+- **Info:** Easy to use fully customizable method for checking if the npm package exists. Coming with default terminal response. The message in the console (color, text ) can be changed to whatever value you want.
+
+| Properties  | Desrciption                     | Type                            |
+| ----------- | ------------------------------- | ------------------------------- |
+| packageName | npm package name                | string                          |
+| options     | Custamizable terminal response. | DependencyExistsWithTextOptions |
+
+```js
+
+export enum DefaultColorsEnum {
+    success = "#008000",
+    error = "#DC143C",
+    warn = "#FFD700",
+    info = "#00FFFF",
+}
+
+export interface DependencyExistsWithTextOptions {
+    success: DependencyExistsWithTextOption;
+    error: DependencyExistsWithTextOption;
+}
+
+interface DependencyExistsWithTextOption {
+    color?: string | DefaultColorsEnum.success | DefaultColorsEnum.error | DefaultColorsEnum.info | DefaultColorsEnum.warn,
+    text: string,
+    warn?: TextOptionsStructure;
+    info?: TextOptionsStructure;
+}
+
+interface TextOptionsStructure {
+    color?: string | DefaultColorsEnum.success | DefaultColorsEnum.error | DefaultColorsEnum.info | DefaultColorsEnum.warn;
+    text?: string;
+}
+
+// Example options types
+
+ success: {
+   text: "string",
+   color?: "string",
+    warn?: {
+      color?: "string",
+      text?: "string",
+    },
+    info?: {
+      color?: "string",
+      text?: "string",
+    },
+  },
+  error: {
+   text: "string",
+   color?: "string",
+    warn?: {
+      color?: "string",
+      text?: "string",
+    },
+    info?: {
+      color?: "string",
+      text?: "string",
+    },
+```
 
 ```js
 import { dependencyExistsWithText } from "@kv/dependency-exists";
 
 dependencyExistsWithText("some-npm-package-name", {
   success: {
-    text: "Module exists!",
+    color: "#ffffff", // string of terminal emulators supported hex color
+    text: "npm package exists!", // string
     warn: {
-      text: "Don't forget to support my work!",
+      color: "#DEADED", // string of terminal emulators supported hex color
+      text: "Some exists warning text.", // string
     },
     info: {
-      text: `Information
-      name: dependency-exists
-      author: Krisityan Velkov`,
+      color: "#00cafc", // string of terminal emulators supported hex color
+      text: "Some exists info text!", // string
+    },
+  },
+  error: {
+    color: "#ffffff", // string of terminal emulators supported hex color
+    text: "Example text: npm package NOT exist!", // string
+    warn: {
+      color: "#DEADED", // string of terminal emulators supported hex color
+      text: "Some exists warning text.", // string
+    },
+    info: {
+      color: "#00cafc", // string of terminal emulators supported hex color
+      text: "Some exists info text!", // string
     },
   },
 });
