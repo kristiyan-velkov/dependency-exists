@@ -1,14 +1,21 @@
 {
   "version": "1.0.0",
   "description": "Dependency Exists - Best way to check if some dependency exists in your package.json file.",
-  "name": "dependency-exists",
+  "name": "@kv/dependency-exists",
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch"
   },
+  "types": "./src/index.d.ts",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "path": "^0.12.7",
+    "url": "^0.11.0"
+  },
   "devDependencies": {
+    "@types/node": "^18.14.2",
     "copy-webpack-plugin": "^11.0.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",

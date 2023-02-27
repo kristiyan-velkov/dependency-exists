@@ -8,6 +8,7 @@ const isProduction = process.env.NODE_ENV == "production";
 const config = {
   entry: "./src/index.ts",
   output: {
+    filename: "index.js",
     path: path.resolve(__dirname, "dist"),
   },
   plugins: [
@@ -15,7 +16,6 @@ const config = {
       patterns: [
         { from: "./README.md", to: "README.md" },
         { from: "./package.json", to: "package.json" },
-        { from: "./LICENSE", to: "LICENSE" },
       ],
     }),
   ],
@@ -37,6 +37,11 @@ const config = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
+    fallback: {
+      fs: false,
+      os: false,
+      path: false,
+    },
   },
 };
 
