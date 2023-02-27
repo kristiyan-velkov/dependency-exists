@@ -1,5 +1,2 @@
 export { dependencyExists } from "./dependency-exists";
-// export {
-//   moduleExistsWithText,
-//   setTextColors,
-// } from "../dependency-exists-with-text";
+export { dependencyExistsWithText } from "./dependency-exists-with-text";

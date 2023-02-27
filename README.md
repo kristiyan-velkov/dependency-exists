@@ -6,7 +6,9 @@
 
 [![Follow me](https://img.shields.io/badge/sponsors-99+-orange.svg)](https://github.com/christiyan14) [![Sponsors](https://img.shields.io/badge/Follow-120-blue?logo=github&style=social.svg)](https://github.com/christiyan14) [![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/) [![Node Version](https://img.shields.io/badge/node-%3E%3D%2014.0.4-brightgreen.svg)](https://nodejs.org/en/)
 
-<img src="https://drive.google.com/uc?export=view&id=1Cpz3hVjXUwOiizKtVfTSZqTIwD6I3oB5"  alt="replace-styles"/>
+<a href="https://www.linkedin.com/in/kristiyan-velkov-763130b3/" target="_blank">
+    <img src="https://drive.google.com/uc?export=view&id=1Cpz3hVjXUwOiizKtVfTSZqTIwD6I3oB5"  alt="replace-styles"/>
+</a>
 
 **Checks if an package.json dependency exists and returns a boolean value.**
 

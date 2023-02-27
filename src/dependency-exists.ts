@@ -1,7 +1,6 @@
-import { DependenciesConfig } from 'types';
 import { readFileSync } from 'fs';
 import path from "path";
-
+import { DependenciesConfig } from './types';
 
 const defaultDependenciesConfig: DependenciesConfig = {
     dependencies: true,
@@ -38,9 +37,3 @@ export const dependencyExists = (packageName: string, dependenciesConfig: Depend
 }
 
 export default dependencyExists;
-
-dependencyExists('test', {
-    dependencies: false,
-    devDependencies: false,
-    peerDependencies: false
-})
