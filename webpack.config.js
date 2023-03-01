@@ -1,30 +1,34 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
-  entry: "./src/index.ts",
+  entry: "./src",
   output: {
     filename: "index.js",
     path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
-  plugins: [
-    new CopyPlugin({
-      patterns: [
-        { from: "./README.md", to: "README.md" },
-        { from: "./package.json", to: "package.json" },
-      ],
-    }),
-  ],
+  plugins: [new UglifyJSPlugin()],
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/i,
         loader: "ts-loader",
         exclude: ["/node_modules/"],
+        options: {
+          compilerOptions: {
+            lib: ["ES2022", "DOM"],
+            target: "ES2022",
+            module: "ESNext",
+            moduleResolution: "NodeNext",
+            outDir: "./dist",
+            declarationDir: "./dist/esm/types",
+          },
+        },
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
@@ -36,7 +40,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".jsx", ".js", "..."],
+    extensions: [".ts", ".jsx", ".js", "..."],
     fallback: {
       fs: false,
       os: false,

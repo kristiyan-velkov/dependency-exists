@@ -1,8 +1,6 @@
-import { Chalk } from "chalk";
 import { dependencyExists } from "./dependency-exists";
 import { DefaultColorsEnum, DependencyExistsWithTextOptions, TextColors } from './types';
-
-const chalk = new Chalk();
+const chalk = require('chalk');
 
 let defaultColors: TextColors = {
     success: DefaultColorsEnum.success,
