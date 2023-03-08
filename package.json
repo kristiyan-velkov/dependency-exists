@@ -10,6 +10,7 @@
   "scripts": {
     "build": "tsc -p ./tsconfig.esm.json",
     "minify": "uglifyjs-folder dist/esm/ -e -o dist/esm/",
+    "minify-all": "uglifyjs -c -o ./dist/esm/index.js -- dist/esm/*",
     "build:cjs": "tsc -p ./tsconfig.cjs.json"
   },
   "types": "./dist/esm/types/types.d.ts",
@@ -17,6 +18,7 @@
   "files": [
     "dist/**/*"
   ],
+  "type": "module",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/christiyan14/dependency-exists/issues"
@@ -50,13 +52,5 @@
     "ECMAscript",
     "Node",
     "JS"
-  ],
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/esm/types/index.d.ts",
-        "default": "./dist/esm/index.min.js"
-      }
-    }
-  }
+  ]
 }
