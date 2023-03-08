@@ -1,2 +1,4 @@
-export { dependencyExists } from "./dependency-exists";
-export { dependencyExistsWithText } from "./dependency-exists-with-text";
+import dependencyExists from "./dependency-exists";
+import dependencyExistsWithText from "./dependency-exists-with-text";
+
+export { dependencyExists, dependencyExistsWithText }

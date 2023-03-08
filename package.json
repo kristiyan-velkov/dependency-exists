@@ -9,10 +9,11 @@
   },
   "scripts": {
     "build": "tsc -p ./tsconfig.esm.json",
+    "minify": "uglifyjs-folder dist/esm/ -e -o dist/esm/",
     "build:cjs": "tsc -p ./tsconfig.cjs.json"
   },
   "types": "./dist/esm/types/types.d.ts",
-  "main": "./dist/esm/index.js",
+  "main": "./dist/esm/index.min.js",
   "files": [
     "dist/**/*"
   ],
@@ -24,6 +25,8 @@
   "dependencies": {
     "chalk": "^5.2.0",
     "path": "^0.12.7",
+    "uglify-js": "^3.17.4",
+    "uglifyjs-folder": "^3.2.0",
     "url": "^0.11.0"
   },
   "devDependencies": {
@@ -52,7 +55,7 @@
     ".": {
       "import": {
         "types": "./dist/esm/types/index.d.ts",
-        "default": "./dist/esm/index.js"
+        "default": "./dist/esm/index.min.js"
       }
     }
   }

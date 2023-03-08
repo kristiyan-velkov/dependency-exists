@@ -34,8 +34,3 @@ interface TextOptionsStructure {
     color?: string | DefaultColorsEnum.success | DefaultColorsEnum.error | DefaultColorsEnum.info | DefaultColorsEnum.warn;
     text?: string;
 }
-
-declare const dependencyExists: (packageName: string, dependenciesConfig?: DependenciesConfig) => boolean;
-declare const dependencyExistsWithText: (packageName: string, options: DependencyExistsWithTextOptions) => boolean;
-
-export { dependencyExists, dependencyExistsWithText };
