@@ -46,37 +46,37 @@ export const dependencyExistsWithText = (
     const chalkError = chalk.hex(options.error?.color || defaultColors.error);
 
     if (dependencyExists(packageName)) {
-        chalkSuccess(options.success?.text || "✔ Installed!");
+        console.log(chalkSuccess(options.success?.text || "✔ Installed!"));
 
         if (options.success?.warn?.text) {
             const chalkWarn = chalk.hex(
                 options.success?.warn?.color || defaultColors.warn
             );
-            chalkWarn(`⚠ ${options.success?.warn.text}` || "");
+            console.log(chalkWarn(`⚠ ${options.success?.warn.text}` || ""));
         }
 
         if (options.success?.info?.text) {
             const chalkInfo = chalk.hex(
                 options.success?.info?.color || defaultColors.info
             );
-            chalkInfo(`ℹ ${options.success?.info.text}` || "");
+            console.log(chalkInfo(`ℹ ${options.success?.info.text}` || ""));
         }
         return true;
     } else {
-        chalkError(options.error?.text || "X Not installed");
+        console.log(chalkError(options.error?.text || "X Not installed"));
 
         if (options.error?.warn?.text) {
             const chalkWarn = chalk.hex(
                 options.error?.warn.color || defaultColors.warn
             );
-            chalkWarn(`⚠ ${options.error?.warn.text}` || "");
+            console.log(chalkWarn(`⚠ ${options.error?.warn.text}` || ""));
         }
 
         if (options.error?.info?.text) {
             const chalkInfo = chalk.hex(
                 options.error?.info.color || defaultColors.info
             );
-            chalkInfo(`ℹ ${options.error?.info.text}` || "");
+            console.log(chalkInfo(`ℹ ${options.error?.info.text}` || ""));
         }
         return false;
     }
