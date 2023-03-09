@@ -11,7 +11,11 @@
     "build": "tsc -p ./tsconfig.esm.json",
     "minify": "uglifyjs-folder dist/esm/ -e -x .js -o dist/esm/",
     "minify-all": "uglifyjs -c -o ./dist/esm/index.js -- dist/esm/*",
-    "build:cjs": "tsc -p ./tsconfig.cjs.json"
+    "build:cjs": "tsc -p ./tsconfig.cjs.json",
+    "build-webpack": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
   },
   "types": "./dist/esm/types/types.d.ts",
   "main": "./dist/esm/index.min.js",
