@@ -1,7 +1,6 @@
+import { dependencyExists } from "./dependency-exists.js";
+import { DefaultColorsEnum, DependencyExistsWithTextOptions, TextColors } from './types.js';
 import { Chalk } from "chalk";
-import { dependencyExists } from "./dependency-exists";
-import { DefaultColorsEnum, DependencyExistsWithTextOptions, TextColors } from './types';
-
 const chalk = new Chalk();
 
 let defaultColors: TextColors = {
@@ -82,5 +81,3 @@ export const dependencyExistsWithText = (
         return false;
     }
 };
-
-export default dependencyExistsWithText;
