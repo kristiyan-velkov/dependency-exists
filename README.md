@@ -34,13 +34,13 @@ You can select where to search the npm package in package.json dependencies (by 
 - Via yarn:
 
 ```code
-yarn add @kv/dependency-exists -D
+yarn add -D dependency-exists
 ```
 
 - Via npm:
 
 ```code
-npm install @kv/dependency-exists --save-dev
+npm install dependency-exists --save-dev
 ```
 
 ## How to use?

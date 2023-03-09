@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc -p ./tsconfig.esm.json",
-    "minify": "uglifyjs-folder dist/esm/ -e -o dist/esm/",
+    "minify": "uglifyjs-folder dist/esm/ -e -x .js -o dist/esm/",
     "minify-all": "uglifyjs -c -o ./dist/esm/index.js -- dist/esm/*",
     "build:cjs": "tsc -p ./tsconfig.cjs.json"
   },
