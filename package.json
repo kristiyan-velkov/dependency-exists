@@ -1,5 +1,5 @@
 {
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Dependency Exists - Best way to check if some dependency exists in your package.json file.",
   "name": "dependency-exists",
   "author": {
@@ -25,9 +25,9 @@
   "type": "module",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/christiyan14/dependency-exists/issues"
+    "url": "https://github.com/kristiyan-velkov/dependency-exists/issues"
   },
-  "homepage": "https://github.com/christiyan14/dependency-exists#readme",
+  "homepage": "https://github.com/kristiyan-velkov/dependency-exists#readme",
   "dependencies": {
     "chalk": "^5.2.0",
     "path": "^0.12.7",
